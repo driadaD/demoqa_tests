@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class TestsPracticeForm {
 
@@ -28,6 +27,9 @@ public class TestsPracticeForm {
         String currentAddress = "Dragonstone";
 
         open("/automation-practice-form");
+
+        executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('#fixedban').remove()");
 
         $("#firstName").setValue(userName);
         $("#lastName").setValue(lastName);
