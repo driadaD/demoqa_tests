@@ -22,8 +22,15 @@ public class TestsPracticeForm {
         String userName = "Дейнерис";
         String lastName = "Таргариен";
         String email = "Khaleesi@queen.com";
-        String mobile = "89997779977";
+        String gender = "Female"; //Male;Female;Other
+        String mobile = "9997779977";
+        String dateBirthMonth = "October";
+        String dateBirthYear = "1986";
+        String dateBirthDay = "23";
         String subjects = "History";
+        String hobbies = "Sports";
+        String hobbies2 = "Music";
+        String picture = "Daenerys.jpg";
         String currentAddress = "Dragonstone";
 
         open("/automation-practice-form");
@@ -34,17 +41,16 @@ public class TestsPracticeForm {
         $("#firstName").setValue(userName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(email);
-        $("#genterWrapper").$(new ByText("Female")).click();
+        $("#genterWrapper").$(new ByText(gender)).click();
         $("#userNumber").setValue(mobile);
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("October");
-        $(".react-datepicker__year-select").selectOption("1986");
-        $(".react-datepicker__day--023:not(.react-datepicker__day--outside-month)").click();
+        $(".react-datepicker__month-select").selectOption(dateBirthMonth);
+        $(".react-datepicker__year-select").selectOption(dateBirthYear);
+        $(".react-datepicker__day--0"+ dateBirthDay +":not(.react-datepicker__day--outside-month)").click();
         $("#subjectsInput").setValue(subjects).pressEnter();
-        $("#hobbiesWrapper").$(new ByText("Sports")).click();
-        $("#hobbiesWrapper").$(new ByText("Music")).click();
-        $("#hobbies-checkbox-1").parent().click();
-        $("#uploadPicture").uploadFile(new File("src/test/resources/Daenerys.jpg"));
+        $("#hobbiesWrapper").$(new ByText(hobbies)).click();
+        $("#hobbiesWrapper").$(new ByText(hobbies2)).click();
+        $("#uploadPicture").uploadFile(new File("src/test/resources/"+picture));
         $("#currentAddress").setValue(currentAddress);
         $("#state").click();
         $("#stateCity-wrapper").$(new ByText("NCR")).click();
@@ -53,7 +59,7 @@ public class TestsPracticeForm {
         $("#submit").click();
 
         $(".modal-title").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text(userName +" "+ lastName), text(email), text("23 October,1986"), text("Female"), text(subjects), text(currentAddress));
+        $(".table-responsive").shouldHave(text(userName +" "+ lastName), text(email), text(gender), text(mobile), text(dateBirthDay+" "+dateBirthMonth+","+dateBirthYear), text(subjects), text(hobbies+ ", " +hobbies2), text(picture), text(currentAddress));
 
         $("#closeLargeModal").click();
     }
