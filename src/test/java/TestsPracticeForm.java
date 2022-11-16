@@ -59,7 +59,9 @@ public class TestsPracticeForm {
         $("#submit").click();
 
         $(".modal-title").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text(userName +" "+ lastName), text(email), text(gender), text(mobile), text(dateBirthDay+" "+dateBirthMonth+","+dateBirthYear), text(subjects), text(hobbies+ ", " +hobbies2), text(picture), text(currentAddress));
+        $(".table-responsive").shouldHave(text(userName + " " + lastName), text(email), text(gender),
+                                text(mobile), text(dateBirthDay + " " + dateBirthMonth + "," + dateBirthYear),
+                                text(subjects), text(hobbies + ", " + hobbies2), text(picture), text(currentAddress));
 
         $("#closeLargeModal").click();
     }
